@@ -12,10 +12,5 @@
         {{ form.as_p }} 
         <button type="submit">Upload</button> 
     </form> 
-    {% for image in raw_images %} 
-        <div class="col-md-4"> 
-            <img src="{{ image.raw_image_img.url }}" class="img-responsive" style="width: 20%; float: left; margin-right: 10px;" /> 
-        </div> 
-    {% endfor %} 
 </body>
 </html>
