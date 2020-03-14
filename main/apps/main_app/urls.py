@@ -6,7 +6,6 @@ from . import views
 
 urlpatterns = [ 
 	path('image_upload', views.image_upload), 
-	path('image_display', views.image_display), 
     url('detect', views.detect),
     url(r'^$', views.index),
 ] 

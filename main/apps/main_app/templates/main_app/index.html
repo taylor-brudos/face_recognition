@@ -7,10 +7,15 @@
 </head>
 <body>
     <h1>face recognition</h1>
-    <form action="/image_upload" enctype="multipart/form-data"> 
+    <form action="/image_upload" method="POST" enctype="multipart/form-data"> 
         {% csrf_token %} 
         {{ form.as_p }} 
         <button type="submit">Upload</button> 
     </form> 
+    {% for image in raw_images %} 
+        <div class="col-md-4"> 
+            <img src="{{ image.raw_image_img.url }}" class="img-responsive" style="width: 20%; float: left; margin-right: 10px;" /> 
+        </div> 
+    {% endfor %} 
 </body>
 </html>
