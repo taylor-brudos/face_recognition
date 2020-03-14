@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from .forms import *
 import numpy as np
 import urllib
 import json
@@ -11,7 +12,15 @@ import os
 FACE_DETECTOR_PATH = "{base_path}/cascades/haarcascade_frontalface_default.xml".format(base_path=os.path.abspath(os.path.dirname(__file__)))
 
 def index(request):
-    return render(request, "main_app/index.html")
+    form = ImageUploadForm() 
+    return render(request, "main_app/index.html", {'form' : form})
+
+def image_upload(request):
+    ImageUploadForm(request.POST, request.FILES).save()
+    return redirect('/image_display')
+
+def image_display(request): 
+	return HttpResponse('successfully uploaded') 
 
 @csrf_exempt
 def detect(request):
